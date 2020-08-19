@@ -1,0 +1,14 @@
++ nsu.g16203.grigorovich.Sum
+- nsu.g16203.grigorovich.Subtract
+* nsu.g16203.grigorovich.Multiply
+/ nsu.g16203.grigorovich.Divide
+Sqrt nsu.g16203.grigorovich.SqRoot
+Print nsu.g16203.grigorovich.Print
+Push nsu.g16203.grigorovich.Push
+Pop nsu.g16203.grigorovich.Pop
+Define nsu.g16203.grigorovich.Define
+Dup nsu.g16203.grigorovich.Dup
+Swap nsu.g16203.grigorovich.Swap
+Rot nsu.g16203.grigorovich.Rot
+Drop nsu.g16203.grigorovich.Drop
+< nsu.g16203.grigorovich.Compare

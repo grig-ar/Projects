@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7C5C300C-2B73-40E0-A756-2408176B95FD}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Notebook</RootNamespace>
+    <AssemblyName>Notebook</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.2.1\lib\net\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\CommandProcessor.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandProcessor.cs" />
+    <Compile Include="Commands\WpfCommandProcessor.cs" />
+    <Compile Include="FileInteraction\FileLoader.cs" />
+    <Compile Include="FileInteraction\FileSaver.cs" />
+    <Compile Include="FileInteraction\FileUtils.cs" />
+    <Compile Include="FileInteraction\IFileLoader.cs" />
+    <Compile Include="FileInteraction\IFileSaver.cs" />
+    <Compile Include="NotebookCommands\AddNoteCommand.cs" />
+    <Compile Include="NotebookCommands\AddPhoneNoteCommand.cs" />
+    <Compile Include="NotebookCommands\AddStudentNoteCommand.cs" />
+    <Compile Include="NotebookCommands\LoadNoteCommand.cs" />
+    <Compile Include="NotebookCommands\PrintCommand.cs" />
+    <Compile Include="NotebookCommands\SaveNoteCommand.cs" />
+    <Compile Include="Notebook\INote.cs" />
+    <Compile Include="Notebook\INotebook.cs" />
+    <Compile Include="Notebook\INoteCreator.cs" />
+    <Compile Include="Notebook\Notebook.cs" />
+    <Compile Include="NoteCreators\PhoneNoteCreator.cs" />
+    <Compile Include="NoteCreators\StudentNoteCreator.cs" />
+    <Compile Include="Notes\IPhoneNote.cs" />
+    <Compile Include="Notes\IStudentNote.cs" />
+    <Compile Include="Notes\PhoneNote.cs" />
+    <Compile Include="Notes\StudentNote.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInteraction\FakeUserFileInput.cs" />
+    <Compile Include="UserInteraction\FakeUserInput.cs" />
+    <Compile Include="UserInteraction\IUserFileInput.cs" />
+    <Compile Include="UserInteraction\IUserInput.cs" />
+    <Compile Include="UserInteraction\IUserOutput.cs" />
+    <Compile Include="UserInteraction\UserFileInput.cs" />
+    <Compile Include="UserInteraction\UserInput.cs" />
+    <Compile Include="UserInteraction\UserOutput.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ContainerImplementation\ContainerImplementation.csproj">
+      <Project>{5dd3458d-5f5c-4766-b3f4-624fb86e9fef}</Project>
+      <Name>ContainerImplementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ContainerInterface\ContainerInterface.csproj">
+      <Project>{6ec8d991-0d8c-4bc3-bcca-75fe5946ba15}</Project>
+      <Name>ContainerInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GuardUtils\GuardUtils.csproj">
+      <Project>{1FED53B3-4A96-43D6-8281-E63C411D05A6}</Project>
+      <Name>GuardUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

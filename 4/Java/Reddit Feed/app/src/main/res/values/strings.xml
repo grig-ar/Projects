@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Reddit viewer</string>
+    <string name="edit_text_hint">Type a subreddit</string>
+    <string name="loading_text">Loading Comments…</string>
+    <string name="home_menu_item">Home</string>
+    <string name="subreddits_menu_item">Subreddits</string>
+    <string name="favorites_menu_item">Favorites</string>
+    <string name="search_button_text">Search Subreddits</string>
+    <string name="comments_tv">comments</string>
+    <string name="fab_desc">Open in browser</string>
+    <string name="post_thumbnail_desc">postThumbnail</string>
+    <string name="subreddit_icon_desc">subredditIcon</string>
+    <string name="content_desc">fullscreenContent</string>
+</resources>

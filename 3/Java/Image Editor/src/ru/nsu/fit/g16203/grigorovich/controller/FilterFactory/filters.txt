@@ -1,0 +1,14 @@
+Desaturate ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Desaturate
+Invert ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Invert
+OrderedDithering ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.OrderedDithering
+FloydSteinbergDithering ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.FloydSteinbergDithering
+Double ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Double
+FindEdgesRoberts ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.FindEdgesRoberts
+FindEdgesSobel ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.FindEdgesSobel
+Blur ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Blur
+Sharpen ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Sharpen
+Emboss ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Emboss
+Watercolor ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Watercolor
+Rotate ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Rotate
+Gamma ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.Gamma
+RenderVolume ru.nsu.fit.g16203.grigorovich.controller.FilterFactory.RenderVolume

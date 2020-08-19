@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_feed"
+        android:icon="@drawable/ic_home_icon"
+        android:title="@string/home_menu_item">
+
+    </item>
+
+    <item
+        android:id="@+id/nav_subreddits"
+        android:icon="@drawable/ic_subreddits_icon"
+        android:title="@string/subreddits_menu_item">
+
+    </item>
+
+    <item
+        android:id="@+id/nav_favorites"
+        android:icon="@drawable/ic_favorites_icon"
+        android:title="@string/favorites_menu_item">
+
+    </item>
+
+</menu>

@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="WpfUserInterface.Views.PhoneNoteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Main.PhoneNoteViewModel}"
+             mc:Ignorable="d"
+             Height="200"
+             Width="200">
+    <Grid>
+        <Label Content="Caption"
+               HorizontalAlignment="Left"
+               Margin="10,20,0,0"
+               VerticalAlignment="Top"
+               RenderTransformOrigin="0.406,-0.828" />
+        <Label Content="Phone"
+               HorizontalAlignment="Left"
+               Margin="10,60,0,0"
+               VerticalAlignment="Top" />
+        <TextBox HorizontalAlignment="Left"
+                 Text="{Binding Path=Caption, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Height="20"
+                 Margin="10,40,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120" />
+        <TextBox HorizontalAlignment="Left"
+                 Text="{Binding Path=PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Height="20"
+                 Margin="10,80,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="120" />
+    </Grid>
+</UserControl>

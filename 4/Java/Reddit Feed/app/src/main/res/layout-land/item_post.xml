@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.bumptech.glide.request.RequestListener" />
+
+        <import type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="post"
+            type="com.artem.nsu.redditfeed.model.IPost" />
+
+        <variable
+            name="imageRequestListener"
+            type="com.bumptech.glide.request.RequestListener&lt;Drawable>" />
+
+        <variable
+            name="postCallback"
+            type="com.artem.nsu.redditfeed.ui.post.IPostClickCallback" />
+
+        <variable
+            name="thumbnailCallback"
+            type="com.artem.nsu.redditfeed.ui.post.IThumbnailClickCallback" />
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
+            name="isThumbnailExists"
+            type="boolean" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="@{() -> postCallback.onClick(post)}"
+        app:cardBackgroundColor="#424242"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="16dp"
+        app:cardMaxElevation="16dp"
+        app:contentPaddingLeft="8dp"
+        app:contentPaddingRight="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/cardImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/post_thumbnail_desc"
+                android:onClick="@{()-> thumbnailCallback.onImageClick(post)}"
+                android:scaleType="centerCrop"
+                app:imageRequestListener="@{imageRequestListener}"
+                app:imageUrl="@{post.image}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cardTitle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:gravity="center_vertical"
+                android:text="@{post.title}"
+                android:textColor="#fff"
+                app:layout_constraintBottom_toTopOf="@+id/cardDate"
+                app:layout_constraintEnd_toStartOf="@+id/cardImage"
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardScore"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <TextView
+                android:id="@+id/cardScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@{post.score}"
+                android:textColor="#f47100"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--    <3d5afe-->
+
+            <TextView
+                android:id="@+id/cardAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@{post.author}"
+                android:textColor="#fff"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/cardScore"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/cardSubreddit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@{post.subreddit}"
+                android:textColor="#fff"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/cardAuthor"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/cardDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical"
+                android:text="@{post.created}"
+                android:textColor="#e0e0e0"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                android:id="@+id/cardCommentAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@{post.numComments}"
+                android:textColor="#e0e0e0"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@id/cardDate"
+                app:layout_constraintStart_toEndOf="@+id/cardDate"
+                tools:ignore="SmallSp" />
+
+            <TextView
+                visibleGone="@{!isLoading}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:text="@string/comments_tv"
+                android:textColor="#e0e0e0"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="@id/cardDate"
+                app:layout_constraintStart_toEndOf="@+id/cardCommentAmount"
+                tools:ignore="SmallSp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/cardProgressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            app:visibleGone="@{isLoading}">
+
+        </ProgressBar>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

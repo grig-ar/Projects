@@ -1,0 +1,51 @@
+﻿@page
+@model Lab4.Pages.Report.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Report</h2>
+
+<div>
+<hr />
+<dl class="dl-horizontal">
+    <dd>
+        <table class="table">
+            <tr>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                        @Html.DisplayNameFor(model => model.Workers[0].FullName)
+                    </a>
+                </th>
+                <th>
+                    <a asp-page="./Index" asp-route-sortOrder="@Model.AwardSort">
+                        @Html.DisplayNameFor(model => model.Projects[0].Award)
+                    </a>
+                </th>
+            </tr>
+            @foreach (var item in Model.Workers)
+            {
+                <tr>
+                    <td>   
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @{
+                            var sum = 0.0;
+                            //if (item.Projects != null)
+                            try
+                            {
+                                sum = item.Projects.Sum(s => s.Award);
+                            } catch (ArgumentNullException)
+                            {
+                                
+                            }
+                        }
+                        @Html.DisplayFor(modelItem => sum)
+                    </td>
+                </tr>
+            }
+        </table>
+    </dd>
+</dl>
+</div>

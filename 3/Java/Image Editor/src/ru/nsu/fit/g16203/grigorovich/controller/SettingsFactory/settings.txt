@@ -1,0 +1,7 @@
+OrderedDithering ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.OrderedDitheringSettings
+FloydSteinbergDithering ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.FloydSteinbergDitheringSettings
+FindEdgesRoberts ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.FindEdgesRobertsSettings
+FindEdgesSobel ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.FindEdgesSobelSettings
+Rotate ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.RotateSettings
+Gamma ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.GammaSettings
+RenderVolume ru.nsu.fit.g16203.grigorovich.controller.SettingsFactory.RenderVolumeSettings

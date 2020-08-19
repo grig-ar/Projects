@@ -1,0 +1,77 @@
+﻿<Window x:Name="MainAppWindow"
+        x:Class="WpfUserInterface.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        Title="Notebook"
+        Height="700"
+        Width="450">
+    <Grid x:Name="GridMainWindow">
+        <ListView
+            ItemsSource="{Binding Path=FilteredNotes}"
+            SelectedItem="{Binding SelectedNote}"
+            Height="470"
+            Width="350" Margin="0,75,0,75">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock
+                            Text="{Binding Path=Caption}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Edit"
+                              Command="{Binding EditNoteCommand}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+        </ListView>
+
+        <ToolBarTray Name="ToolBarTrayMainWindow"
+                     HorizontalAlignment="Left"
+                     Height="25"
+                     VerticalAlignment="Top"
+                     Width="800"
+                     Margin="0,0,-0.4,0">
+            <ToolBar>
+                <Button x:Name="ButtonNewNotebook"
+                        Command="{Binding Path=DownloadCommand}"
+                        Content="New" />
+                <Button x:Name="ButtonSaveNotebook"
+                        Command="{Binding Path=SaveCommand}"
+                        Content="Save" />
+                <Button x:Name="Load"
+                        Command="{Binding Path=LoadCommand}"
+                        Content="Load" />
+                <Button x:Name="ButtonHelp"
+                        Command="{Binding Path=HelpCommand}"
+                        Content="Help" />
+            </ToolBar>
+        </ToolBarTray>
+        <TextBox HorizontalAlignment="Left"
+                 Text="{Binding Path=TextFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Height="25"
+                 Margin="44,30,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="349" />
+        <Button Content="+"
+                HorizontalAlignment="Left"
+                Margin="44,584,0,0"
+                VerticalAlignment="Top"
+                Width="120"
+                Command="{Binding Path=AddNoteCommand}" />
+        <Button Content="-"
+                Command="{Binding Path=RemoveItemCommand}"
+                HorizontalAlignment="Left"
+                Margin="272,584,0,0"
+                VerticalAlignment="Top"
+                Width="120" />
+    </Grid>
+
+</Window>

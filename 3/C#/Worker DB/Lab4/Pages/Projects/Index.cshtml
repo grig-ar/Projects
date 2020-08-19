@@ -1,0 +1,48 @@
+﻿@page
+@model Lab4.Pages.Projects.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Available projects</h2>
+
+<p>
+    <a asp-page="Create">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].Award)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Project[0].Worker)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Project) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Award)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Worker.FullName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProjectID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProjectID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProjectID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
